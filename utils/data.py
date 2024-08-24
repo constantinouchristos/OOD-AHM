@@ -44,6 +44,19 @@ FEATURES_PROCESSOR = {
 
 
 def parse_data_paths(path_input):
+
+    """
+    Parses directories to gather all image file paths.
+
+    Arguments:
+        path_input: (str) : The root directory path containing subdirectories 
+                            with image files.
+
+    Returns:
+        all_paths_imagess: (list) : A list of file paths for all `.png` images 
+                                    found in the specified directory and its 
+                                    subdirectories.
+    """
     
     all_paths_dirs = [os.path.join(path_input,i) for i in os.listdir(path_input)]
     all_paths_imagess = []
@@ -139,6 +152,19 @@ def apply_tesser(x, **kwargs):
 
 def write_df_file(df,path) -> None:
 
+    """
+    Writes a DataFrame to a CSV file in a specified directory.
+
+    Arguments:
+        df  : (pd.DataFrame) : The DataFrame to be saved as a CSV file.
+        path: (str)          : The path to the output directory where the 
+                               temporary directory will be created and the CSV 
+                               file will be saved.
+
+    Returns:
+        None
+    """
+
     path_temp_to_save = os.path.join(self.args.output_dir, "temp")
 
     if not os.path.exists(path_temp_to_save):
@@ -149,6 +175,27 @@ def write_df_file(df,path) -> None:
 
 
 def fdir(path,specific_end='.zip',sepcific_remove=None,sepcific_include=None):
+
+
+    """
+    Filters and retrieves file paths in a directory based on specific criteria.
+
+
+    Arguments:
+        path            : (str)  : The directory path to search for files.
+        specific_end    : (str)  : Optional. The file extension that files must 
+                                   end with to be included in the output list. 
+                                   Defaults to '.zip'.
+        sepcific_remove : (str)  : Optional. A substring that, if found in a 
+                                   filename, will exclude that file from the 
+                                   output list.
+        sepcific_include: (str)  : Optional. A substring that must be present 
+                                   in a filename for it to be included in the 
+                                   output list.
+
+    Returns:
+        out: (list) : A list of file paths that meet the specified criteria.
+    """
     
     out = [os.path.join(path,i) for i in os.listdir(path)]
 
@@ -170,6 +217,19 @@ def mkdir(path):
 
 
 def json_serialize(dicto):
+
+    """
+    Recursively serializes a dictionary to ensure all values are JSON-compatible.
+
+
+    Arguments:
+        dicto: (dict) : The input dictionary that may contain nested structures 
+                        (e.g., lists, NumPy arrays, or other dictionaries).
+
+    Returns:
+        new_dict: (dict) : A new dictionary with all values converted to 
+                           JSON-serializable formats.
+    """
 
     new_dict = {}
 
