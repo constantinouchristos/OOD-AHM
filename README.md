@@ -1,6 +1,6 @@
 # OOD-AHM
 directory for paper: 
-https://doi.org/10.48550/arXiv.2408.11237
+
 
 Tite: 
 Out-of-Distribution Detection with Attention Head Masking for Multi-modal Document Classification
